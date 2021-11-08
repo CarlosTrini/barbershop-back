@@ -1,0 +1,38 @@
+{
+  "name": "barbershop-api",
+  "version": "1.0.0",
+  "description": "in this api you can login, register, create, read, delete, update users",
+  "main": "app.js",
+  "scripts": {
+    "devServer": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "api",
+    "backend",
+    "nodejs",
+    "express",
+    "jwt",
+    "mongoose",
+    "mongoAtlas",
+    "cors",
+    "crud",
+    "dotenv",
+    "express-validator",
+    "bcryptJs"
+  ],
+  "author": "CarlosTrinidad",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}

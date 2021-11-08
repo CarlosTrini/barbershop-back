@@ -1,0 +1,43 @@
+const router = require('express').Router();
+const { check } = require('express-validator');
+const authJwt = require('../middlewares/authJwt');
+const fieldErrors = require('../middlewares/fieldErrors');
+const reservationsController = require('../controllers/reservationsController');
+
+//HERE IS ALL ABOUT RESERVATIONS ==>> ADD, UPDATE, DELETE, GET, GET_BY_USER, GET_BY_DATE
+
+// /barbershop/api/reservation
+
+//++++++++++++++++++++ GET_BY_USER RESERVATIONS  USER ACTION
+router.get('/reservation/client/:id',
+  authJwt,
+  reservationsController.getByUserReservations
+);
+//++++++++++++++++++++ GET_BY_DATE RESERVATIONS ADMIN ACTION
+router.get('/reservation/date/:date',
+  authJwt,
+  reservationsController.getByDateReservations
+);
+
+// ++++++++++++++++++++--ADD RESERVATION
+router.post('/reservation',
+  authJwt,
+  [
+    check("nameservice", "The service name  is required").not().isEmpty(),
+    check("date", "The field date is required").not().isEmpty(),
+    check("hour", "The field hour is required").not().isEmpty(),
+    check("price", "The field price is required").not().isEmpty(),
+    check("category", "The field category is required").not().isEmpty(),
+  ],
+  fieldErrors,
+  reservationsController.addReservation
+);
+
+//++++++++++++++++++++ DELETE RESERVATION ADMIN AND USER ACTION
+router.delete('/reservation/:id', 
+  authJwt,
+  reservationsController.deleteReservation
+);
+//++++++++++++++++++++ UPDATE RESERVATION
+
+module.exports = router;
