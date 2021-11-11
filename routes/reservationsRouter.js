@@ -38,6 +38,8 @@ router.delete('/reservation/:id',
   authJwt,
   reservationsController.deleteReservation
 );
+
 //++++++++++++++++++++ UPDATE RESERVATION
+//If the user wants to update a reservation ... He has to delete the reservation and make a new reservation
 
 module.exports = router;

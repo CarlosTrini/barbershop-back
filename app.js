@@ -16,9 +16,9 @@ dbConnection();
 
 //routes
 const baseUrl = '/barbershop/api/';
-app.use(baseUrl, require('./routes/auth/authRoutes')); // auth =>  login and register
-app.use(baseUrl, require('./routes/services/barberServiceRoutes')); // services
-app.use(baseUrl, require('./routes/reservations/reservationsRouter')); // reservations
+app.use(baseUrl, require('./routes/authRoutes')); // auth =>  login and register
+app.use(baseUrl, require('./routes/barberServiceRoutes')); // services
+app.use(baseUrl, require('./routes/reservationsRouter')); // reservations
 
 
 app.listen(PORT, (error) => {

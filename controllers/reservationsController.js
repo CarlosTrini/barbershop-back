@@ -75,7 +75,7 @@ const deleteReservation = async (req, res) => {
    const {role} = req.currentUser;
 
    //check if id exists
-   if(!id) return res.status(400).json({error: true, msg: 'There is not id'});
+   if(!idReservation) return res.status(400).json({error: true, msg: 'There is not id'});
 
    //else
    if(role !== 'admin'){
@@ -108,16 +108,11 @@ const deleteReservation = async (req, res) => {
       }
    }
 }
-//++++++++++++++++++++ UPDATE RESERVATION
-const updateReservation = async (req, res) => {
-
-}
 
 
 module.exports = {
    addReservation,
    getByUserReservations,
    getByDateReservations,
-   deleteReservation,
-   updateReservation
+   deleteReservation
 }
