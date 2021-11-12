@@ -6,11 +6,7 @@ const clientModel = require('../models/clientModel');
 
 //+++++++++++++++++++++++++++++++++++++ LOGIN 
 const login = async (req, res) => {
-   // //check if all fields are correct
-   // THIS WAS USING LIKE MIDDLEWARE.... fieldErrors
-   // const errors = validationResult(req);
-   // if (!errors.isEmpty()) return res.json({ error: true, msg: errors.array() });
-
+ 
    //check if this client exists
    let clientExists = null;
    try {
@@ -21,7 +17,7 @@ const login = async (req, res) => {
 
    //if the client doesn't exist
    if (!clientExists) {
-      return res.status(400).json({ error: true, msg: 'This client does not exist' });
+      return res.status(200).json({ error: true, msg: 'This client does not exist' });
    }
 
    //compare passwords 
@@ -29,12 +25,12 @@ const login = async (req, res) => {
    try {
       passwordValid = await bcryptjs.compare(req.body.password, clientExists.password);
    } catch (error) {
-      return res.status(400).json({ error: true, msg: 'Check your email or your password' });
+      return res.status(200).json({ error: true, msg: 'Check your email or your password' });
    }
    
    //if password is not correct
    if (!passwordValid) {
-      return res.status(400).json({ error: true, msg: 'Check your email or your password' });
+      return res.status(200).json({ error: true, msg: 'Check your email or your password' });
    }
 
    //if password is correct
@@ -54,7 +50,7 @@ const login = async (req, res) => {
       function(error, token) {
          return error 
          ? res.status(400).json({error:true, msg: 'Something was wrong, try again later'})
-         : res.status(200).json({error: false, msg: token})
+         : res.status(200).json({error: false, msg: {token, user: clientExists.user}})
       }
    );
 
@@ -67,9 +63,6 @@ const login = async (req, res) => {
 
 //+++++++++++++++++++++++++++++++++REGISTER
 const register = async (req, res) => {
-   // //check if all fields are correct
-   // const errors = validationResult(req);
-   // if (!errors.isEmpty()) return res.json({ error: true, msg: errors.array() });
 
    //check if password and passwordConfirm are the same
    if (req.body.password !== req.body.passwordConfirm) {
