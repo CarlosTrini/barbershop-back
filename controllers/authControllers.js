@@ -50,7 +50,7 @@ const login = async (req, res) => {
       function(error, token) {
          return error 
          ? res.status(400).json({error:true, msg: 'Something was wrong, try again later'})
-         : res.status(200).json({error: false, msg: {token, user: clientExists.user}})
+         : res.status(200).json({error: false, msg: {token, user: clientExists.user, role: clientExists.role}})
       }
    );
 
