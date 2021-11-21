@@ -5,7 +5,6 @@ const serviceModel = require('../models/serviceModel');
 //++++++++++++++++++++++++++++++++++++++++++++++++++ GET SERVICES
 const getServices = async (req, res) => {
    const currentUser = req.currentUser; //data token currentUser
-
    try {
       const services = await serviceModel.find();
       return res.status(200).json({ error: false, currentUser, msg: services });

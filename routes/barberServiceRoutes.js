@@ -10,7 +10,7 @@ const fieldErrors = require('../middlewares/fieldErrors');
 //  /barbershop/api/
 //++++++++++++++++++++++++++++GET SERVICES --
 router.get('/',
-   validateToken,
+   // validateToken,
    barbershopController.getServices
 );
 
