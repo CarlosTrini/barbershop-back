@@ -13,6 +13,13 @@ router.get('/',
    // validateToken,
    barbershopController.getServices
 );
+ 
+//--------------------GET SERVICE BY ID
+router.get('/service/:id',
+    validateToken,
+   barbershopController.getServiceById
+);
+
 
 //--------------------GET SERVICE BY CATEGORY
 router.get('/service/:category',

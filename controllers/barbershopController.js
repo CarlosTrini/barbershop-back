@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+const { validationResult, check } = require('express-validator');
 const serviceModel = require('../models/serviceModel');
 
 
@@ -11,6 +11,25 @@ const getServices = async (req, res) => {
    } catch (error) {
       return res.status(500).json({ error: true, msg: 'Something was wrong. Try again later' });
    }
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++ GET SERVICE BY ID
+const getServiceById = async(req, res) => {
+   const idService = req.params.id;
+
+   //check id idService is in the params
+   if(!idService){
+      return res.status(400).json({ error: true, msg: 'There is not id' });
+   }
+
+   //if there is idService
+   try {
+      const service = await serviceModel.findById({_id: idService});  
+      return res.status(200).json({ error: false, msg: service });
+   } catch (error) {
+      return res.status(500).json({ error: true, msg: 'Something was wrong. Try again later' });
+   }
+   
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++ GET SERVICES BY CATEGORY
@@ -86,6 +105,7 @@ const updateService = async (req, res) => {
 
 module.exports = {
    getServices,
+   getServiceById,
    getServiceByCategory,
    addService,
    updateService,
