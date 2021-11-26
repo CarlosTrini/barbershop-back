@@ -60,7 +60,7 @@ const getByDateReservations = async (req, res) => {
    try {
       const dates = await reservationModel.find({ date: date });
       if (dates.length < 1) {
-         return res.status(200).json({ error: false, msg: 'No reservations yet' });
+         return res.status(200).json({ error: false, msg: [] });
       }
       return res.status(200).json({ error: false, msg: dates })
    } catch (error) {
