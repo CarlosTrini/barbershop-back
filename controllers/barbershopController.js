@@ -39,13 +39,13 @@ const getServiceByCategory = async (req, res) => {
 
    //check if category is in the params
    if (!categoryService) {
-      return res.status(400).json({ error: true, msg: [] });
+      return res.status(400).json({ error: true, msg: 'send category' });
    }
 
    // if there is category
    try {
-      const service = await serviceModel.findOne({ category: categoryService });
-      return res.status(200).json({ error: false, msg: service });
+      const services = await serviceModel.find({ category: categoryService });
+      return res.status(200).json({ error: false, msg: services });
    } catch (error) {
       return res.status(500).json({ error: true, msg: 'Something was wrong. Try again later' });
    }
