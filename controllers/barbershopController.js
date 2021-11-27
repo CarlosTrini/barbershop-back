@@ -39,7 +39,7 @@ const getServiceByCategory = async (req, res) => {
 
    //check if category is in the params
    if (!categoryService) {
-      return res.status(400).json({ error: true, msg: 'There is not category' });
+      return res.status(400).json({ error: true, msg: [] });
    }
 
    // if there is category
