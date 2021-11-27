@@ -23,7 +23,7 @@ router.get('/service/:id',
 
 //--------------------GET SERVICE BY CATEGORY
 router.get('/service/:category',
-   validateToken,
+   // validateToken,
    barbershopController.getServiceByCategory
 );
 
