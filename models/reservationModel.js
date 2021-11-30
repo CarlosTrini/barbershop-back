@@ -27,6 +27,14 @@ const reservationSchema = mongoose.Schema({
       type: String,
       required: true,
       trim: true
+   },
+   totalPay: {
+      type: Number,
+      required: true
+   },
+   quantity:{
+      type: Number,
+      required: true
    }
 });
 
