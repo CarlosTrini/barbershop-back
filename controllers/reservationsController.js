@@ -6,8 +6,7 @@ const clientModel = require('../models/clientModel');
 // ++++++++++++++++++++ADD RESERVATION
 const addReservation = async (req, res) => {
    const service = req.body;
-   
-   console.log('HAGO LA RESERVACIÓN CON ESTOS DATOS => ', service)
+   service.idclient = req.currentUser.idUser;
 
    let clientExists = null;
    //check if client exists
