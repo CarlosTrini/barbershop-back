@@ -84,13 +84,15 @@ const deleteReservation = async (req, res) => {
          //check if reservation exists
          const reservationExists = await reservationModel.findById({_id: idReservation});
 
+         
          if(!reservationExists) return res.status(400).json({error: true, msg: 'This reservation does not exists'});
 
          //compare if iduser is the same in the reservation.idClient
-         const idClientReservation = await reservationModel.findById({_id: idReservation}, {idclient});
-
-         if(idUser !== idClientReservation) return res.status(400).json({error: true, msg: 'Unauthorized'});
-
+         const idClientReservation = await reservationModel.findById({_id: idReservation});
+         
+         
+         if(idUser !== idClientReservation.idclient.toString()) return res.status(400).json({error: true, msg: 'Unauthorized'});
+         
          // if reservation exists && id are the same
          await reservationModel.findByIdAndRemove({_id: idReservation});
          return res.status(200).json({error: false, msg: 'The reservation was deleted'});
