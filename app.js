@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config({path: '.env'});
 const dbConnection = require('./configs/db');
 
-const PORT = process.env.PORT || 4500;
+const port = process.env.port || 4500;
 
 //middlewares
 app.use(express.urlencoded({extended: false}));
@@ -21,7 +21,7 @@ app.use(baseUrl, require('./routes/barberServiceRoutes')); // services
 app.use(baseUrl, require('./routes/reservationsRouter')); // reservations
 
 
-app.listen(PORT,'0.0.0.0', (error) => {
+app.listen(port,'0.0.0.0', (error) => {
    error
    ? console.log('Error => ', error)
    : console.log(`Server runing => ${PORT}`)
