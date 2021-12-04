@@ -1,7 +1,8 @@
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config({path: '.env'});
+// require('dotenv').config({path: '.env'});
+require('dotenv').config();
 const clientModel = require('../models/clientModel');
 
 //+++++++++++++++++++++++++++++++++++++ LOGIN 
