@@ -12,6 +12,7 @@ const login = async (req, res) => {
    try {
       clientExists = await clientModel.findOne({ email: req.body.email });
    } catch (error) {
+      console.log(error, 'linea 15')
       return res.status(400).json({ error: true, msg: 'Something was wrong, try again later' });
    }
 
@@ -48,6 +49,9 @@ const login = async (req, res) => {
          expiresIn: "1d"
       },
       function(error, token) {
+       if(error){
+         console.log(error, 'linea 53')
+       }
          return error 
          ? res.status(400).json({error:true, msg: 'Something was wrong, try again later'})
          : res.status(200).json({error: false, msg: {token, user: clientExists.user, role: clientExists.role, id: clientExists._id}})
