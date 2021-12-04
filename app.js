@@ -21,7 +21,7 @@ app.use(baseUrl, require('./routes/barberServiceRoutes')); // services
 app.use(baseUrl, require('./routes/reservationsRouter')); // reservations
 
 
-app.listen(PORT, (error) => {
+app.listen(PORT,'0.0.0.0', (error) => {
    error
    ? console.log('Error => ', error)
    : console.log(`Server runing => ${PORT}`)
