@@ -45,7 +45,7 @@ const login = async (req, res) => {
    }
    jwt.sign(
       payload,
-      process.env.SECRET_WORD_JWT,
+      `${process.env.SECRET_WORD_JWT}`,
       {
          expiresIn: "1d"
       },
